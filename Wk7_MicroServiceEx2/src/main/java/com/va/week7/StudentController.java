@@ -1,15 +1,14 @@
 package com.va.week7;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/student")
 public class StudentController {
 
-    @GetMapping
-    public Student getStudentDetails() {
-        return new Student(123, "John", "Fury", "6756239806");
+    @GetMapping("/{id}")
+    public Student getStudentById(@PathVariable String id) {
+        Student.Address address = new Student.Address("1 Markbrook Lane", "123", "Etobicoke");
+        return new Student(id, "John", "Fury", "3456234512", "2000-05-11", address);
     }
 }
